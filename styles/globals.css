@@ -1,11 +1,16 @@
 html,
+
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
-
+@font-face {
+  font-family: aquirebold;
+  src: url(../styles/fonts/aquirebold.woff2);
+}
+@import url('https://fonts.googleapis.com/css2?family=Short+Stack&display=swap');
 a {
   color: inherit;
   text-decoration: none;
