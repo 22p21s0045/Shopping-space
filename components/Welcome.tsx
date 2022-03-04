@@ -10,10 +10,10 @@ function Welcome() {
     <div>
       <Grid container alignItems="center" justifyContent="center">
       <Box className="Welcome">
-      <Image src={Space} width={1130} height={675} />
+      <Image src={Space} width={1130} height={675} className="Move"/>
       </Box>
       <Box>
-        <Typography variant="h1" style={{ fontFamily: "aquirebold", color: "white",fontSize: 24 }}>
+        <Typography variant="h1" style={{ fontFamily: "aquirebold", color: "white",fontSize: 96 }}>
           WELCOME TO SPACE
         </Typography>
 

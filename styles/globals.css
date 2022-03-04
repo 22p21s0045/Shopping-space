@@ -25,3 +25,15 @@ a {
   position: absolute;
   z-index: -1;
 }
+/* Copy this @keyframes block to your CSS*/
+@keyframes yourAnimation {
+  0.0%{
+      transform: translate3d(0px,50px);
+  }
+  50.4%{
+      transform: translate(0px,3px);
+  }
+}
+.Move{
+  animation: yourAnimation 1s ease-in-out infinite;
+}
