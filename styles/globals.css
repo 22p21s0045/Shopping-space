@@ -37,3 +37,7 @@ a {
 .Move{
   animation: yourAnimation 1s ease-in-out infinite;
 }
+.Alien{
+  animation: yourAnimation 1s ease-in-out infinite;
+  padding-left: 100px
+}

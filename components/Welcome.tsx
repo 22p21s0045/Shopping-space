@@ -5,6 +5,7 @@ import Alien from "../styles/img/AlienFix.svg";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 function Welcome(props: any) {
   return (
     <div>
@@ -27,9 +28,17 @@ function Welcome(props: any) {
             HELLO {props.Name}
           </Typography>
 
-          <Image src={Alien} width={549} height={360} className="Move" />
+          
         </Box>
+        <Image src={Alien} width={549} height={360} className="Alien"  />
+        <div style={{paddingTop: 100}}>
+        <Button  
+            style={{ fontFamily: "aquirebold", color: "white",fontSize: 48}}>
+            EXPLORE NOW
+          </Button>
+          </div>
       </Grid>
+      
     </div>
   );
 }
