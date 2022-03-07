@@ -5,11 +5,13 @@ import styles from '../styles/Home.module.css'
 import Navbar from '../components/Navbar'
 import Welcome from '../components/Welcome'
 import Background from '../components/Background'
+import Sponsor from '../components/Sponsor'
 const Home: NextPage = () => {
   return (
     <div >
       <Navbar/>
       <Welcome/>
+      <Sponsor/>
       <Background/>
     </div>
   )
