@@ -17,8 +17,8 @@ function Sponsor() {
         Authorization: `Bearer ${"54d7d3bc628a23e27006f902f3a4d249306ef1dbdd0757356c224b7da18bda92f3c58af9230ffe97478f1ec4f06afa4d58f43d0074743af05d28056e7fb15878334af0aa8af4af08233e77a1fab244188c04b3d4cfdd359b9d7e3b48a5348767fb73fcdc78fa0bf65e661988fb19b56cc509b5c6ac4eade569d48b0d335f8b9d"}`,
       },
     });
-    return get
-   -
+    return get.data;
+    
   };
   const { isLoading, isError, data, error } = useQuery("sponsor", fetchSponsor);
   if (isLoading) {
@@ -72,14 +72,16 @@ function Sponsor() {
           >
             SPONSOR
           </Typography>
-          {data.map((item: any) => {
+           {data.data.map((item: any) => {
+             console.log(item);
             return (
               <Box>
-                <Image src={item.data.link} width={500} height={500} />
+                
+               <Image src={`${item.attributes.link}`} width={500} height={500} />
               </Box>
             );
 
-          })}
+          })} 
         </Box>
       </Grid>
     </div>
