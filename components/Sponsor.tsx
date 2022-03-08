@@ -5,8 +5,8 @@ import Skeleton from "@mui/material/Skeleton";
 import Typography from "@mui/material/Typography";
 import { useQuery } from "react-query";
 import { useEffect } from "react";
-import Alert from '@mui/material/Alert';
-import {Animated} from "react-animated-css";
+import Alert from "@mui/material/Alert";
+import { Animated } from "react-animated-css";
 import axios from "axios";
 
 function Sponsor() {
@@ -20,29 +20,44 @@ function Sponsor() {
   };
   const { isLoading, isError, data, error } = useQuery("sponsor", fetchSponsor);
   if (isLoading) {
-    return <Skeleton variant="rectangular" width={210} height={118} />;
-  }
-  if (isError) {
     return (
-      
-      <Grid container justifyContent="center" alignItems="center"  style={{ paddingTop: 100 }}>
+      <Grid container justifyContent="center"
+      alignItems="center"
+      style={{ paddingTop: 100 }}>
         <Animated animationIn="swing" animationOut="fadeOut" isVisible={true}>
-        <Typography
+          <Typography
             style={{ fontFamily: "aquirebold", color: "white", fontSize: 48 }}
           >
             SPONSOR
           </Typography>
-          <div style={{paddingTop: 30}}>
-          <Alert severity="warning">Cannot load sponsor</Alert>
+        <Skeleton variant="rectangular" width={500} height={500} style ={{backgroundColor: "#fff"}}/>;
+        </Animated>
+      </Grid>
+    );
+  }
+  if (isError) {
+    return (
+      <Grid
+        container
+        justifyContent="center"
+        alignItems="center"
+        style={{ paddingTop: 100 }}
+      >
+        <Animated animationIn="swing" animationOut="fadeOut" isVisible={true}>
+          <Typography
+            style={{ fontFamily: "aquirebold", color: "white", fontSize: 48 }}
+          >
+            SPONSOR
+          </Typography>
+          <div style={{ paddingTop: 30 }}>
+            <Alert severity="warning">Cannot load sponsor</Alert>
           </div>
         </Animated>
       </Grid>
-      
-    )
+    );
   }
   return (
     <div>
-      
       <Grid
         container
         alignItems="center"
@@ -57,7 +72,6 @@ function Sponsor() {
           </Typography>
         </Box>
       </Grid>
-      
     </div>
   );
 }
