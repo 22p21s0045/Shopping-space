@@ -9,6 +9,7 @@ import Link from 'next/link'
 import { useEffect } from "react";
 import Alert from "@mui/material/Alert";
 import { Animated } from "react-animated-css";
+import { motion } from "framer-motion"
 import axios from "axios";
 
 function Sponsor() {
@@ -86,6 +87,7 @@ function Sponsor() {
               console.log(item);
               return (
                 <Grid item >
+                  <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }} >
                 <Link href = {`${item.attributes.site}`}>
                 <a>
                   <Image
@@ -96,6 +98,7 @@ function Sponsor() {
                   />
                   </a>
                 </Link>
+                </motion.div>
                 </Grid>
               );
             })}
