@@ -5,6 +5,7 @@ import Skeleton from "@mui/material/Skeleton";
 import Typography from "@mui/material/Typography";
 import { useQuery } from "react-query";
 import Image from "next/image";
+import Link from 'next/link'
 import { useEffect } from "react";
 import Alert from "@mui/material/Alert";
 import { Animated } from "react-animated-css";
@@ -18,21 +19,29 @@ function Sponsor() {
       },
     });
     return get.data;
-    
   };
   const { isLoading, isError, data, error } = useQuery("sponsor", fetchSponsor);
   if (isLoading) {
     return (
-      <Grid container justifyContent="center"
-      alignItems="center"
-      style={{ paddingTop: 100 }}>
+      <Grid
+        container
+        justifyContent="center"
+        alignItems="center"
+        style={{ paddingTop: 100 }}
+      >
         <Animated animationIn="swing" animationOut="fadeOut" isVisible={true}>
           <Typography
             style={{ fontFamily: "aquirebold", color: "white", fontSize: 48 }}
           >
             SPONSOR
           </Typography>
-        <Skeleton variant="rectangular" width={500} height={500} style ={{backgroundColor: "#fff"}}/>;
+          <Skeleton
+            variant="rectangular"
+            width={500}
+            height={500}
+            style={{ backgroundColor: "#fff" }}
+          />
+          ;
         </Animated>
       </Grid>
     );
@@ -72,16 +81,25 @@ function Sponsor() {
           >
             SPONSOR
           </Typography>
-           {data.data.map((item: any) => {
-             console.log(item);
-            return (
-              <Box>
-                
-               <Image src={`${item.attributes.link}`} width={500} height={500} />
-              </Box>
-            );
-
-          })} 
+          <Grid container justifyContent="center" alignItems="center" spacing ={0.1}>
+            {data.data.map((item: any) => {
+              console.log(item);
+              return (
+                <Grid item >
+                <Link href = {`${item.attributes.site}`}>
+                <a>
+                  <Image
+                    src={`${item.attributes.link}`}
+                    width={140}
+                    height={110}
+                    
+                  />
+                  </a>
+                </Link>
+                </Grid>
+              );
+            })}
+          </Grid>
         </Box>
       </Grid>
     </div>
