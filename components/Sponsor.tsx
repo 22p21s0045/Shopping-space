@@ -86,7 +86,7 @@ function Sponsor() {
             {data.data.map((item: any) => {
               console.log(item);
               return (
-                <Grid item >
+                <Grid item key={item.id}>
                   <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }} >
                 <Link href = {`${item.attributes.site}`}>
                 <a>
