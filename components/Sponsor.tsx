@@ -5,11 +5,11 @@ import Skeleton from "@mui/material/Skeleton";
 import Typography from "@mui/material/Typography";
 import { useQuery } from "react-query";
 import Image from "next/image";
-import Link from 'next/link'
+import Link from "next/link";
 import { useEffect } from "react";
 import Alert from "@mui/material/Alert";
 import { Animated } from "react-animated-css";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 import axios from "axios";
 
 function Sponsor() {
@@ -82,28 +82,60 @@ function Sponsor() {
           >
             SPONSOR
           </Typography>
-          <Grid container justifyContent="center" alignItems="center" spacing ={0.1}>
+          <Grid
+            container
+            justifyContent="center"
+            alignItems="center"
+            spacing={0.1}
+          >
             {data.data.map((item: any) => {
               console.log(item);
               return (
                 <Grid item key={item.id}>
-                  <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }} >
-                <Link href = {`${item.attributes.site}`}>
-                <a>
-                  <Image
-                    src={`${item.attributes.link}`}
-                    width={140}
-                    height={110}
-                    
-                  />
-                  </a>
-                </Link>
-                </motion.div>
+                  <motion.div
+                    whileHover={{ scale: 1.2 }}
+                    whileTap={{ scale: 0.8 }}
+                  >
+                    <Link href={`${item.attributes.site}`}>
+                      <a>
+                        <Image
+                          src={`${item.attributes.link}`}
+                          width={140}
+                          height={110}
+                        />
+                      </a>
+                    </Link>
+                  </motion.div>
                 </Grid>
               );
             })}
           </Grid>
         </Box>
+      </Grid>
+      <Grid container justifyContent="center" style ={{paddingTop:100}}>
+        <Box
+          sx={{
+            width: 700,
+            height: 320,
+            backgroundColor: "#270082",
+            borderRadius: "40px",
+            textAlign: "center",
+            border: "1px solid white"
+          }}
+          
+        >
+          <Typography
+            style={{ fontFamily: "aquirebold", color: "white", fontSize: 24, }}
+          >
+            LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT. QUAE
+            SEQUUNTUR IGITUR? SED HAEC NIHIL SANE AD REM; HOC LOCO TENERE SE
+            TRIARIUS NON POTUIT. RATIONIS ENIM PERFECTIO EST VIRTUS; DUO REGES:
+            CONSTRUCTIO INTERRETE. SINT MODO PARTES VITAE BEATAE.
+          </Typography>
+        </Box>
+        <Grid item >
+        <Image src ={require("../styles/img/flame-296.gif")} width={470} height={410} />
+        </Grid>
       </Grid>
     </div>
   );
