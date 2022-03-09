@@ -6,13 +6,15 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { motion } from "framer-motion";
+import { motion,useViewportScroll,useTransform} from "framer-motion";
 function Welcome(props: any) {
+  const { scrollYProgress } = useViewportScroll();
+  const scale = useTransform(scrollYProgress, [0, 1], [0.2, 2]);
   return (
     <div>
       <Grid container alignItems="center" justifyContent="center">
         <motion.div
-          animate={{ x: 100, y: 100 }}
+          animate={{ x: 100, y: 100}}
           transition={{ type: "spring", stiffness: 100 }}
           initial={true}
         >
@@ -20,7 +22,8 @@ function Welcome(props: any) {
             <Image src={Space} width={1130} height={675} className="Move" />
           </Box>
         </motion.div>
-        <Box>
+        <motion.div style ={{scaleY: scrollYProgress}}>
+        <Box className = "WelcomeT">
           <Typography
             variant="h1"
             style={{ fontFamily: "aquirebold", color: "white", fontSize: 96 }}
@@ -35,6 +38,7 @@ function Welcome(props: any) {
             HELLO {props.Name}
           </Typography>
         </Box>
+        </motion.div>
         <Image src={Alien} width={549} height={360} className="Alien" />
         <div style={{ paddingTop: 100 }}>
           <Button
