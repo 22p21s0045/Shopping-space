@@ -6,16 +6,20 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import Background from "../components/Background"
 import { motion, useViewportScroll, useTransform } from "framer-motion";
 import {useState} from "react"
 function Welcome(props: any) {
   const { scrollYProgress } = useViewportScroll();
-  const [SpeeedBg,setSpeeedBg] = useState(0)
+  const [SpeeedBg,setSpeeedBg] = useState<number>(0)
 const HandleHover = () => {
-setSpeeedBg(5)
+setSpeeedBg(50)
+console.log("this is hovering")
+
 }
   return (
     <div>
+      <Background Speed = {SpeeedBg}/>
       <Grid container alignItems="center" justifyContent="center">
         <motion.div
           animate={{ x: 100 }}
@@ -49,7 +53,7 @@ setSpeeedBg(5)
           </Box>
         </motion.div>
         <Image src={Alien} width={549} height={360} className="Alien" />
-        <motion.div whileHover={{scale:1.5}} >
+        <motion.div whileHover={{scale:1.5}}   >
         <div style={{ paddingTop: 100 }}>
           <Button
             style={{
@@ -58,6 +62,8 @@ setSpeeedBg(5)
               fontSize: 48,
               transform: "skewX(10deg)",
             }}
+            onMouseOver={HandleHover}
+            onMouseLeave={()=>setSpeeedBg(1)}
           >
             EXPLORE NOW
           </Button>
