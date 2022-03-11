@@ -53,8 +53,13 @@ console.log("this is hovering")
           </Box>
         </motion.div>
         <Image src={Alien} width={549} height={360} className="Alien" />
-        <motion.div whileHover={{scale:1.5}}   >
         <div style={{ paddingTop: 100 }}>
+        <motion.div whileHover={{scale:1.5,background:[
+          "linear-gradient(to right, #f0f -200%, #0ff -100%, #f0f 0%, #0ff 100%)",
+          "linear-gradient(to right, #f0f -100%, #0ff 0%, #f0f 100%, #0ff 200%)",
+          "linear-gradient(to right, #f0f 0%, #0ff 100%, #f0f 200%, #0ff 300%)",
+        ],borderRadius:100}}   >
+        
           <Button
             style={{
               fontFamily: "aquirebold",
@@ -67,9 +72,13 @@ console.log("this is hovering")
           >
             EXPLORE NOW
           </Button>
-        </div>
+        
         </motion.div>
+        </div>
       </Grid>
+      <Grid container>
+        
+        </Grid>
     </div>
   );
 }
