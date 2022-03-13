@@ -1,6 +1,7 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
 import Skeleton from "@mui/material/Skeleton";
 import Typography from "@mui/material/Typography";
 import { useQuery } from "react-query";
@@ -12,7 +13,9 @@ import { Animated } from "react-animated-css";
 import { motion } from "framer-motion";
 import axios from "axios";
 
-function Sponsor() {
+
+function Sponsor({ comments }: any) {
+  console.log(comments);
   const fetchSponsor = async () => {
     const get = await axios.get("http://localhost:1337/api/sponsors/", {
       headers: {
@@ -112,7 +115,7 @@ function Sponsor() {
           </Grid>
         </Box>
       </Grid>
-      <Grid container justifyContent="center" style ={{paddingTop:100}}>
+      <Grid container justifyContent="center" style={{ paddingTop: 100 }}>
         <Box
           sx={{
             width: 700,
@@ -120,12 +123,11 @@ function Sponsor() {
             backgroundColor: "#270082",
             borderRadius: "40px",
             textAlign: "center",
-            border: "1px solid white"
+            border: "1px solid white",
           }}
-          
         >
           <Typography
-            style={{ fontFamily: "aquirebold", color: "white", fontSize: 24, }}
+            style={{ fontFamily: "aquirebold", color: "white", fontSize: 24 }}
           >
             LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT. QUAE
             SEQUUNTUR IGITUR? SED HAEC NIHIL SANE AD REM; HOC LOCO TENERE SE
@@ -133,12 +135,21 @@ function Sponsor() {
             CONSTRUCTIO INTERRETE. SINT MODO PARTES VITAE BEATAE.
           </Typography>
         </Box>
-        <Grid item >
-        <Image src ={require("../styles/img/flame-296.gif")} width={470} height={410} />
+        <Grid item>
+          <Image
+            src={require("../styles/img/flame-296.gif")}
+            width={470}
+            height={410}
+          />
         </Grid>
       </Grid>
+      
+        //TODO: fix map
+        
+      
     </div>
   );
 }
 
 export default Sponsor;
+

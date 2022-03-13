@@ -76,9 +76,7 @@ console.log("this is hovering")
         </motion.div>
         </div>
       </Grid>
-      <Grid container>
-        
-        </Grid>
+      
     </div>
   );
 }
