@@ -14,7 +14,7 @@ import Down from "../components/Down";
 const Home: NextPage = ({ comments }: any) => {
   console.table(comments);
   return (
-    <div>
+    <div className="all">
       <Navbar />
       <Welcome />
       <Sponsor />
