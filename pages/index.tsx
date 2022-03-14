@@ -8,7 +8,9 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Background from "../components/Background";
 import Sponsor from "../components/Sponsor";
+import Image from "next/image";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
+import Down from "../components/Down";
 const Home: NextPage = ({ comments }: any) => {
   console.table(comments);
   return (
@@ -20,7 +22,10 @@ const Home: NextPage = ({ comments }: any) => {
         {comments.map((comment: any) => {
           return (
             <Grid item key={comment.id}>
-              <Card sx={{ minWidth: 345, minHeight: 435 }} className ="CommentCard">
+              <Card
+                sx={{ minWidth: 345, minHeight: 435 }}
+                className="CommentCard"
+              >
                 <CardContent>
                   <Grid
                     key={comment.id}
@@ -60,7 +65,19 @@ const Home: NextPage = ({ comments }: any) => {
           );
         })}
       </Grid>
+      <Grid container style={{ paddingTop: 100 }}>
+        <Grid item className="mountain">
+          <Image
+            src={require("../styles/img/mountain.svg")}
+            layout="responsive"
+            width={1471}
+           
+          />
+        </Grid>
+      </Grid>
+
       <Background />
+      <Down />
     </div>
   );
 };
