@@ -1,6 +1,7 @@
 import React from "react";
 import Particles from "react-tsparticles";
-function Background() {
+function Background(props: any) {
+  
   return (
     <div className="BGS">
       <Particles
@@ -44,7 +45,7 @@ function Background() {
             color: {
               value: "#ffffff",
             },
-            
+
             collisions: {
               enable: true,
             },
@@ -53,7 +54,7 @@ function Background() {
               enable: true,
               outMode: "bounce",
               random: false,
-              speed: 1,
+              speed: props.Speed,
               straight: false,
             },
             number: {
@@ -82,3 +83,6 @@ function Background() {
 }
 
 export default Background;
+Background.defaultProps = {
+  Speed: 1,
+};
