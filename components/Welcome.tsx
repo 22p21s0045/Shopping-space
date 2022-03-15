@@ -7,6 +7,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Background from "../components/Background"
+import confetti from 'canvas-confetti';
 import { motion, useViewportScroll, useTransform } from "framer-motion";
 import {useState} from "react"
 function Welcome(props: any) {
@@ -16,6 +17,14 @@ const HandleHover = () => {
 setSpeeedBg(50)
 console.log("this is hovering")
 
+}
+const handleConfetti = () => {
+  confetti({
+    zIndex: 999,
+    particleCount: 100,
+    spread: 70,
+    origin: { x: 0.5, y: 0.7 }
+  });
 }
   return (
     <div>
@@ -69,6 +78,7 @@ console.log("this is hovering")
             }}
             onMouseOver={HandleHover}
             onMouseLeave={()=>setSpeeedBg(1)}
+            onClick = {handleConfetti}
           >
             EXPLORE NOW
           </Button>
@@ -80,6 +90,7 @@ console.log("this is hovering")
     </div>
   );
 }
+
 
 export default Welcome;
 Welcome.defaultProps = {

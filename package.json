@@ -13,8 +13,10 @@
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",
     "@mui/material": "^5.4.4",
+    "@types/canvas-confetti": "^1.4.2",
     "animate.css": "^4.1.1",
     "axios": "^0.26.0",
+    "canvas-confetti": "^1.5.1",
     "framer-motion": "^6.2.8",
     "graphql": "^16.3.0",
     "grommet": "^2.21.0",
@@ -22,6 +24,7 @@
     "react": "17.0.2",
     "react-animated-css": "^1.2.1",
     "react-dom": "17.0.2",
+    "react-icons": "^4.3.1",
     "react-query": "^3.34.16",
     "react-tsparticles": "^1.41.6",
     "styled-components": "^5.3.3"
