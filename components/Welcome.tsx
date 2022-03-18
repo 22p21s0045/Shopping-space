@@ -1,4 +1,6 @@
 import React from "react";
+import { useInView } from 'react-intersection-observer';
+import {useEffect} from 'react'
 import Image from "next/image";
 import Space from "../styles/img/Logo-new.svg";
 import Alien from "../styles/img/AlienFix.svg";
@@ -8,11 +10,16 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Background from "../components/Background"
 import confetti from 'canvas-confetti';
-import { motion, useViewportScroll, useTransform } from "framer-motion";
+import { motion, useViewportScroll, useTransform,useAnimation } from "framer-motion";
 import {useState} from "react"
 function Welcome(props: any) {
   const { scrollYProgress } = useViewportScroll();
   const [SpeeedBg,setSpeeedBg] = useState<number>(0)
+  const { ref, inView, entry } = useInView();
+useEffect(()=>{
+  console.log("View is ",inView)
+  ,[inView]})
+
 const HandleHover = () => {
 setSpeeedBg(50)
 console.log("this is hovering")
@@ -39,28 +46,42 @@ const handleConfetti = () => {
             <Image src={Space} width={1130} height={675} className="Move" />
           </Box>
         </motion.div>
-        <motion.div style={{ scaleY: scrollYProgress }}>
+        <div ref ={ref}>
+        <motion.div >
           <Box className="WelcomeT">
             <Typography
               variant="h1"
               style={{
                 fontFamily: "aquirebold",
                 color: "white",
-                fontSize: 96,
-                transform: "skewX(10deg)",
+               
+                transform: "skewX(5deg)",
+              }}
+              fontSize={{
+                lg: 96,
+                md:72,
+                sm: 40,
+                xs: 72
               }}
             >
               WELCOME TO SPACE
             </Typography>
             <Typography
               variant="h1"
-              style={{ fontFamily: "aquirebold", color: "white", fontSize: 24 }}
+              style={{ fontFamily: "aquirebold", color: "white"}}
               align="center"
+              fontSize={{
+                lg: 24,
+                md:24,
+                sm: 32,
+                xs: 72
+              }}
             >
               HELLO {props.Name}
             </Typography>
           </Box>
         </motion.div>
+        </div>
         <Image src={Alien} width={549} height={360} className="Alien" />
         <div style={{ paddingTop: 100 }}>
         <motion.div whileHover={{scale:1.5,background:[
