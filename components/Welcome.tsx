@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import Space from "../styles/img/Space shop Real.svg";
+import Space from "../styles/img/Logo-new.svg";
 import Alien from "../styles/img/AlienFix.svg";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -23,7 +23,7 @@ const handleConfetti = () => {
     zIndex: 999,
     particleCount: 100,
     spread: 70,
-    origin: { x: 0.5, y: 0.7 }
+    
   });
 }
   return (
