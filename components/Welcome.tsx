@@ -67,7 +67,7 @@ const handleConfetti = () => {
           "linear-gradient(to right, #f0f -200%, #0ff -100%, #f0f 0%, #0ff 100%)",
           "linear-gradient(to right, #f0f -100%, #0ff 0%, #f0f 100%, #0ff 200%)",
           "linear-gradient(to right, #f0f 0%, #0ff 100%, #f0f 200%, #0ff 300%)",
-        ],borderRadius:100}}   >
+        ],borderRadius:100}}  transition={{ type: "tween", duration:1.3}} >
         
           <Button
             style={{
