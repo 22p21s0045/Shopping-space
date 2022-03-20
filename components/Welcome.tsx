@@ -21,6 +21,7 @@ function Welcome(props: any) {
   const { scrollYProgress } = useViewportScroll();
   const [SpeeedBg, setSpeeedBg] = useState<number>(0);
   const { ref, inView, entry } = useInView();
+
   const animation = useAnimation();
   useEffect(() => {
     console.log("View is ", inView);
