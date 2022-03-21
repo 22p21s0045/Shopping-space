@@ -1,6 +1,7 @@
 import React from "react";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
+import Link from 'next/link'
 import Image from "next/image";
 import Space from "../styles/img/Logo-new.svg";
 import Alien from "../styles/img/AlienFix.svg";
@@ -119,6 +120,8 @@ function Welcome(props: any) {
             }}
             transition={{ type: "tween", duration: 1.3 }}
           >
+            <Link href="/explore">
+
             <Button
               style={{
                 fontFamily: "aquirebold",
@@ -132,6 +135,7 @@ function Welcome(props: any) {
             >
               EXPLORE NOW
             </Button>
+            </Link>
           </motion.div>
         </div>
       </Grid>
