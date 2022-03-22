@@ -172,7 +172,7 @@ function Sponsor({ comments }: any) {
           />
         </Grid>
       </Grid>
-      //TODO: fix map
+     
     </div>
   );
 }
