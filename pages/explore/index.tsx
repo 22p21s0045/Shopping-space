@@ -15,7 +15,7 @@ function index({ menus }: any) {
       <Navbar />
 
       <Grid container sx={{ height: "100%" }}>
-        <Grid item xs={2} md={2} lg={1}>
+        <Grid item xs={2} md={1} lg={1}>
           <Box
             sx={{ backgroundColor: "#000", height: "100%", paddingTop: 6 }}
             alignItems="center"
@@ -48,19 +48,39 @@ function index({ menus }: any) {
           md={9}
           lg={9}
           justifyContent="center"
+         
           sx={{ paddingLeft: 3,paddingTop:3 }}
         >
           <Box
             sx={{
               backgroundColor: "#000",
               width: "100%",
-              height: "20%",
+              height: "30%",
               borderRadius: 5,
             }}
           >
-            <Box sx={{ backgroundColor: "#999", width: "33%", height: 33 }}>
-              dfffd
-            </Box>
+           <Grid container justifyContent="center" spacing={4} alignItems = "center" sx ={{backgroundColor: "red"}}>
+              <Grid item xs={3} lg={1} sx ={{top:"50%",postion:"relative"}}>
+                <Button>
+                  Hello
+                </Button>
+                </Grid>
+                <Grid item xs={3} lg={1}>
+                <Button>
+                  Hello
+                </Button>
+                </Grid>
+                <Grid item xs={3} lg={1}>
+                <Button>
+                  Hello
+                </Button>
+                </Grid>
+                <Grid item xs={3} lg={1}>
+                <Button>
+                  Hello
+                </Button>
+                </Grid>
+           </Grid>
           </Box>
         </Grid>
       </Grid>
