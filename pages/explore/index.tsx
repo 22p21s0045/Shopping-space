@@ -65,19 +65,15 @@ console.log(tags)
               alignItems="center"
               sx={{ paddingTop: 1.5 }}
             >
+            {tags.map((item: { attributes: { nametag: string }; }) => {
+              return (
+                <Grid item  xs={3} lg={1}>
+                  <Button>{item.attributes.nametag}</Button>
+                </Grid>
+              );
+            })}
             
-              <Grid item xs={3} lg={1}>
-                <Button>Hello</Button>
-              </Grid>
-              <Grid item xs={3} lg={1}>
-                <Button>Hello</Button>
-              </Grid>
-              <Grid item xs={3} lg={1}>
-                <Button>Hello</Button>
-              </Grid>
-              <Grid item xs={3} lg={1}>
-                <Button>Hello</Button>
-              </Grid>
+              
             </Grid>
           </Box>
         </Grid>
