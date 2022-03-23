@@ -59,7 +59,7 @@ function index({ menus }: any) {
               borderRadius: 5,
             }}
           >
-           <Grid container justifyContent="center" spacing={4} alignItems = "center" sx ={{backgroundColor: "red"}}>
+           <Grid container justifyContent="center" spacing={4} alignItems = "center" sx ={{paddingTop:1.5}}>
               <Grid item xs={3} lg={1} sx ={{top:"50%",postion:"relative"}}>
                 <Button>
                   Hello
