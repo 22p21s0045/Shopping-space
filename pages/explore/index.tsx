@@ -7,9 +7,9 @@ import Button from "@mui/material/Button";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import { GetStaticProps } from "next";
 import Link from "next/link";
-function index({ menus }: any) {
+function index({ menus,tags }: any) {
   //FIXME: height 100
-
+console.log(tags)
   return (
     <div>
       <Navbar />
@@ -48,39 +48,37 @@ function index({ menus }: any) {
           md={9}
           lg={9}
           justifyContent="center"
-         
-          sx={{ paddingLeft: 3,paddingTop:3 }}
+          sx={{ paddingLeft: 3, paddingTop: 3 }}
         >
           <Box
             sx={{
-              backgroundColor: "#000",
+              backgroundColor: "#E2C3C3",
               width: "100%",
               height: "30%",
               borderRadius: 5,
             }}
           >
-           <Grid container justifyContent="center" spacing={4} alignItems = "center" sx ={{paddingTop:1.5}}>
-              <Grid item xs={3} lg={1} sx ={{top:"50%",postion:"relative"}}>
-                <Button>
-                  Hello
-                </Button>
-                </Grid>
-                <Grid item xs={3} lg={1}>
-                <Button>
-                  Hello
-                </Button>
-                </Grid>
-                <Grid item xs={3} lg={1}>
-                <Button>
-                  Hello
-                </Button>
-                </Grid>
-                <Grid item xs={3} lg={1}>
-                <Button>
-                  Hello
-                </Button>
-                </Grid>
-           </Grid>
+            <Grid
+              container
+              justifyContent="center"
+              spacing={4}
+              alignItems="center"
+              sx={{ paddingTop: 1.5 }}
+            >
+            
+              <Grid item xs={3} lg={1}>
+                <Button>Hello</Button>
+              </Grid>
+              <Grid item xs={3} lg={1}>
+                <Button>Hello</Button>
+              </Grid>
+              <Grid item xs={3} lg={1}>
+                <Button>Hello</Button>
+              </Grid>
+              <Grid item xs={3} lg={1}>
+                <Button>Hello</Button>
+              </Grid>
+            </Grid>
           </Box>
         </Grid>
       </Grid>
@@ -105,12 +103,20 @@ export const getStaticProps: GetStaticProps = async () => {
             }
           }
         }
+        tags {
+          data {
+            attributes {
+              nametag
+            }
+          }
+        }
       }
     `,
   });
   return {
     props: {
       menus: data.menus.data,
+      tags: data.tags.data,
     },
   };
 };
