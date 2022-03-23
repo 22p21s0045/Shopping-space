@@ -6,13 +6,10 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import {GetStaticProps} from 'next'
-interface Props {
-  name: string;
-  path: string;
-}
-function index(menus:Props) {
+import Link from 'next/link'
+function index({menus}:any) {
   //FIXME: height 100
-  console.log(menus)
+ 
   return (
     <div>
       <Navbar />
@@ -21,11 +18,14 @@ function index(menus:Props) {
         <Grid item xs ={2} md={2} lg={1} >
           <Box sx={{backgroundColor: '#000',height:'100%',paddingTop:6}} alignItems='center' justifyItems ='center' textAlign='center'>
             <Avatar variant='rounded' sx={{margin:'auto'}}/>
-            
-            <Button sx ={{fontFamily: "aquirebold",width:'100%'}}>
-              dff
-            </Button>
-            
+            {menus.map((item: { attributes: { name: string,path:string }; }) =>{
+             return (
+               <Link href ={item.attributes.path}>
+               <Button sx ={{fontFamily: "aquirebold",width:'100%',color: "white"}}>{item.attributes.name}</Button>
+               </Link>
+             )
+           })}
+           
             
 
           </Box>
@@ -58,7 +58,7 @@ export const getStaticProps: GetStaticProps = async () => {
   });
   return {
     props: {
-      menus: data.menus
+      menus: data.menus.data
     }
   };
 }
