@@ -4,12 +4,13 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import { GetStaticProps } from "next";
 import Link from "next/link";
-function index({ menus,tags }: any) {
+function index({ menus, tags }: any) {
   //FIXME: height 100
-console.log(tags)
+  console.log(tags);
   return (
     <div>
       <Navbar />
@@ -65,17 +66,18 @@ console.log(tags)
               alignItems="center"
               sx={{ paddingTop: 1.5 }}
             >
-            {tags.map((item: { attributes: { nametag: string }; }) => {
-              return (
-                <Grid item  xs={3} lg={1}>
-                  <Button>{item.attributes.nametag}</Button>
-                </Grid>
-              );
-            })}
-            
-              
+              {tags.map((item: { attributes: { nametag: string } }) => {
+                return (
+                  <Grid item xs={3} lg={1}>
+                    <Button>{item.attributes.nametag}</Button>
+                  </Grid>
+                );
+              })}
             </Grid>
           </Box>
+          <Grid container sx={{ backgroundColor: "red" }}>
+            <h1>sdfsdfsdf</h1>
+          </Grid>
         </Grid>
       </Grid>
     </div>
@@ -106,6 +108,21 @@ export const getStaticProps: GetStaticProps = async () => {
             }
           }
         }
+        products {
+          data {
+            attributes {
+              description
+              name
+              image {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     `,
   });
@@ -113,6 +130,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       menus: data.menus.data,
       tags: data.tags.data,
+      products:data.products.data,
     },
   };
 };
