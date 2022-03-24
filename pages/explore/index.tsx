@@ -5,12 +5,15 @@ import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
+import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import { GetStaticProps } from "next";
+import Image from 'next/image'
 import Link from "next/link";
-function index({ menus, tags }: any) {
+function index({ menus, tags,products }: any) {
   //FIXME: height 100
-  console.log(tags);
+  console.log(products);
   return (
     <div>
       <Navbar />
@@ -77,6 +80,17 @@ function index({ menus, tags }: any) {
           </Box>
           <Grid container sx={{ backgroundColor: "red" }}>
             <h1>sdfsdfsdf</h1>
+            {products.map((item: any) => {
+              return(
+                <Card >
+                  <CardMedia image = {`${process.env.NEXT_PUBLIC_URL}${item.attributes.image.data.attributes.url}`}/>
+                  <CardContent>
+                    <h1>{item.attributes.name}</h1>
+                  </CardContent>
+
+                </Card>
+              )
+            })}
           </Grid>
         </Grid>
       </Grid>
