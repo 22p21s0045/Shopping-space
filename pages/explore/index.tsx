@@ -5,13 +5,13 @@ import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
+import CardMedia from "@mui/material/CardMedia";
+import CardContent from "@mui/material/CardContent";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import { GetStaticProps } from "next";
-import Image from 'next/image'
+import Image from "next/image";
 import Link from "next/link";
-function index({ menus, tags,products }: any) {
+function index({ menus, tags, products }: any) {
   //FIXME: height 100
   console.log(products);
   return (
@@ -60,6 +60,7 @@ function index({ menus, tags,products }: any) {
               width: "100%",
               height: "30%",
               borderRadius: 5,
+              maxHeight: 50,
             }}
           >
             <Grid
@@ -78,18 +79,33 @@ function index({ menus, tags,products }: any) {
               })}
             </Grid>
           </Box>
-          <Grid container sx={{ backgroundColor: "red" }}>
-            <h1>sdfsdfsdf</h1>
+          <Grid
+            container
+            spacing={3}
+            justifyContent="center"
+            sx={{ backgroundColor: "red", marginTop: 5, marginLeft: 5 }}
+          >
             {products.map((item: any) => {
-              return(
-                <Card >
-                  <CardMedia image = {`${process.env.NEXT_PUBLIC_URL}${item.attributes.image.data.attributes.url}`}/>
-                  <CardContent>
-                    <h1>{item.attributes.name}</h1>
-                  </CardContent>
-
-                </Card>
-              )
+              return (
+                <Grid item lg ={3} md ={6}>
+                  <Card >
+                    <CardMedia
+                    component="img"
+                      image={`${process.env.NEXT_PUBLIC_URL}${item.attributes.image.data.attributes.url}`}
+                      sx={{
+                        width: 224,
+                        height: 240,
+                        position: "relative",
+                        left: "15%",
+                        marginTop: 5,
+                      }}
+                    />
+                    <CardContent>
+                      <h1>{item.attributes.name}</h1>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              );
             })}
           </Grid>
         </Grid>
@@ -144,7 +160,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       menus: data.menus.data,
       tags: data.tags.data,
-      products:data.products.data,
+      products: data.products.data,
     },
   };
 };
