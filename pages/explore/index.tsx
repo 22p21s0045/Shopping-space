@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
+import Typography from '@mui/material/Typography';
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import { GetStaticProps } from "next";
 import Image from "next/image";
@@ -83,12 +84,12 @@ function index({ menus, tags, products }: any) {
             container
             spacing={3}
             justifyContent="center"
-            sx={{ backgroundColor: "red", marginTop: 5, marginLeft: 5 }}
+            sx={{  marginTop: 5, marginLeft: 2 }}
           >
             {products.map((item: any) => {
               return (
-                <Grid item lg ={3} md ={6}>
-                  <Card >
+                <Grid item lg ={3.5} md ={6} xs ={12}>
+                  <Card className ="Card">
                     <CardMedia
                     component="img"
                       image={`${process.env.NEXT_PUBLIC_URL}${item.attributes.image.data.attributes.url}`}
@@ -102,6 +103,14 @@ function index({ menus, tags, products }: any) {
                     />
                     <CardContent>
                       <h1>{item.attributes.name}</h1>
+                      <Typography>
+                        {item.attributes.description}
+                        
+                      </Typography>
+                      <Typography sx ={{textAlign: "center",paddingTop:5,fontSize:26}}>
+                      {item.attributes.price}
+                     
+                      </Typography>
                     </CardContent>
                   </Card>
                 </Grid>
@@ -143,6 +152,7 @@ export const getStaticProps: GetStaticProps = async () => {
             attributes {
               description
               name
+              price
               image {
                 data {
                   attributes {
