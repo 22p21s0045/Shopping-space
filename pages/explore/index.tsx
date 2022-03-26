@@ -7,11 +7,14 @@ import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
-import Typography from '@mui/material/Typography';
+import Typography from "@mui/material/Typography";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import { GetStaticProps } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import Carts from "../../styles/img/Carts.svg";
+import Background from "../../components/Background";
+import IconButton from "@mui/material/IconButton";
 function index({ menus, tags, products }: any) {
   //FIXME: height 100
   console.log(products);
@@ -29,15 +32,16 @@ function index({ menus, tags, products }: any) {
           >
             <Avatar variant="rounded" sx={{ margin: "auto" }} />
             {menus.map(
-              (item: { attributes: { name: string; path: string } }) => {
+              (item: { id:number; attributes: { name: string; path: string; id:number } }) => {
                 return (
-                  <Link href={item.attributes.path}>
+                  <Link href={item.attributes.path} key ={item.id}>
                     <Button
                       sx={{
                         fontFamily: "aquirebold",
                         width: "100%",
                         color: "white",
                       }}
+                      key={item.id}
                     >
                       {item.attributes.name}
                     </Button>
@@ -45,6 +49,9 @@ function index({ menus, tags, products }: any) {
                 );
               }
             )}
+            <IconButton className ="Carts">
+        <Image src={Carts} />
+      </IconButton>
           </Box>
         </Grid>
         <Grid
@@ -71,10 +78,10 @@ function index({ menus, tags, products }: any) {
               alignItems="center"
               sx={{ paddingTop: 1.5 }}
             >
-              {tags.map((item: { attributes: { nametag: string } }) => {
+              {tags.map((item: {id:number; attributes: { nametag: string } }) => {
                 return (
-                  <Grid item xs={3} lg={1}>
-                    <Button>{item.attributes.nametag}</Button>
+                  <Grid item xs={3} lg={1} key ={item.id}>
+                    <Button >{item.attributes.nametag}</Button>
                   </Grid>
                 );
               })}
@@ -84,14 +91,14 @@ function index({ menus, tags, products }: any) {
             container
             spacing={3}
             justifyContent="center"
-            sx={{  marginTop: 5, marginLeft: 2 }}
+            sx={{ marginTop: 5, marginLeft: 2 }}
           >
             {products.map((item: any) => {
               return (
-                <Grid item lg ={3.5} md ={6} xs ={12}>
-                  <Card className ="Card">
+                <Grid item lg={3.5} md={6} xs={12} key ={item.id}>
+                  <Card className="Card">
                     <CardMedia
-                    component="img"
+                      component="img"
                       image={`${process.env.NEXT_PUBLIC_URL}${item.attributes.image.data.attributes.url}`}
                       sx={{
                         width: 224,
@@ -103,13 +110,15 @@ function index({ menus, tags, products }: any) {
                     />
                     <CardContent>
                       <h1>{item.attributes.name}</h1>
-                      <Typography>
-                        {item.attributes.description}
-                        
-                      </Typography>
-                      <Typography sx ={{textAlign: "center",paddingTop:5,fontSize:26}}>
-                      {item.attributes.price}
-                     
+                      <Typography>{item.attributes.description}</Typography>
+                      <Typography
+                        sx={{
+                          textAlign: "center",
+                          paddingTop: 5,
+                          fontSize: 26,
+                        }}
+                      >
+                        {item.attributes.price}
                       </Typography>
                     </CardContent>
                   </Card>
@@ -119,6 +128,10 @@ function index({ menus, tags, products }: any) {
           </Grid>
         </Grid>
       </Grid>
+      <IconButton className ="Carts">
+        <Image src={Carts} />
+      </IconButton>
+      <Background color="#FFE6E6" />
     </div>
   );
 }
@@ -131,39 +144,43 @@ export const getStaticProps: GetStaticProps = async () => {
   });
   const { data } = await client.query({
     query: gql`
-      query Getmenu {
-        menus {
-          data {
-            attributes {
-              name
-              path
-            }
+    query Getmenu {
+      menus {
+        data {
+          id
+          attributes {
+            name
+            path
           }
         }
-        tags {
-          data {
-            attributes {
-              nametag
-            }
+      }
+      tags {
+        data {
+          id
+          attributes {
+            nametag
           }
         }
-        products {
-          data {
-            attributes {
-              description
-              name
-              price
-              image {
-                data {
-                  attributes {
-                    url
-                  }
+      }
+      products {
+        data {
+          id
+          attributes {
+            description
+            name
+            price
+            image {
+              data {
+                attributes {
+                  url
                 }
               }
             }
           }
         }
       }
+    }
+    
     `,
   });
   return {

@@ -59,7 +59,7 @@ function Welcome(props: any) {
   };
   return (
     <div>
-      <Background Speed={SpeeedBg} />
+      <Background Speed={SpeeedBg} color ="#000" />
       <Grid container alignItems="center" justifyContent="center">
         <motion.div
           animate={{ x: 100 }}

@@ -69,3 +69,9 @@ a {
   background-origin: border-box;
   background-clip: content-box, border-box;
 }
+
+.Carts{
+  position:sticky;
+  
+  bottom:0;
+}

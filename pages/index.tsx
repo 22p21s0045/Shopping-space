@@ -97,7 +97,7 @@ const Home: NextPage = ({ comments }: any) => {
         </Grid>
       </Grid>
 
-      <Background />
+      <Background color ="#000"/>
       <Down />
     </div>
   );
