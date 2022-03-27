@@ -6,6 +6,7 @@ body {
 }
 body {
   overflow-x: hidden;
+  margin:0px
 }
 @font-face {
   font-family: aquirebold;
@@ -72,6 +73,7 @@ a {
 
 .Carts{
   position:sticky;
-  
+  left: 100;
+  left: 90%;
   bottom:0;
 }

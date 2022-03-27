@@ -49,9 +49,7 @@ function index({ menus, tags, products }: any) {
                 );
               }
             )}
-            <IconButton className ="Carts">
-        <Image src={Carts} />
-      </IconButton>
+         
           </Box>
         </Grid>
         <Grid
@@ -80,7 +78,7 @@ function index({ menus, tags, products }: any) {
             >
               {tags.map((item: {id:number; attributes: { nametag: string } }) => {
                 return (
-                  <Grid item xs={3} lg={1} key ={item.id}>
+                  <Grid item xs={3} lg={1} >
                     <Button >{item.attributes.nametag}</Button>
                   </Grid>
                 );
