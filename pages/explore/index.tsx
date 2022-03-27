@@ -15,6 +15,8 @@ import Link from "next/link";
 import Carts from "../../styles/img/Carts.svg";
 import Background from "../../components/Background";
 import IconButton from "@mui/material/IconButton";
+import BackTop from '../../components/Backtop';
+import Backtop from "../../components/Backtop";
 function index({ menus, tags, products }: any) {
   //FIXME: height 100
   console.log(products);
@@ -104,6 +106,7 @@ function index({ menus, tags, products }: any) {
                         position: "relative",
                         left: "15%",
                         marginTop: 5,
+                        borderRadius: 5,
                       }}
                     />
                     <CardContent>
@@ -128,7 +131,10 @@ function index({ menus, tags, products }: any) {
       </Grid>
       <IconButton className ="Carts">
         <Image src={Carts} />
+        <h5>0</h5>
+        
       </IconButton>
+      <Backtop/>
       <Background color="#FFE6E6" />
     </div>
   );
