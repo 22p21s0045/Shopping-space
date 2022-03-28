@@ -17,6 +17,7 @@ a {
   color: inherit;
   text-decoration: none;
 }
+@import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre&display=swap');
 
 .BGS {
   width: 100%;
@@ -76,4 +77,8 @@ a {
   left: 100;
   left: 90%;
   bottom:0;
+}
+.ButtonBuy{
+  position: relative;
+  left:20%;
 }

@@ -15,8 +15,11 @@ import Link from "next/link";
 import Carts from "../../styles/img/Carts.svg";
 import Background from "../../components/Background";
 import IconButton from "@mui/material/IconButton";
-import BackTop from '../../components/Backtop';
+import BackTop from "../../components/Backtop";
 import Backtop from "../../components/Backtop";
+import { motion } from "framer-motion";
+import { makeStyles } from "@mui/styles";
+
 function index({ menus, tags, products }: any) {
   //FIXME: height 100
   console.log(products);
@@ -34,9 +37,12 @@ function index({ menus, tags, products }: any) {
           >
             <Avatar variant="rounded" sx={{ margin: "auto" }} />
             {menus.map(
-              (item: { id:number; attributes: { name: string; path: string; id:number } }) => {
+              (item: {
+                id: number;
+                attributes: { name: string; path: string; id: number };
+              }) => {
                 return (
-                  <Link href={item.attributes.path} key ={item.id}>
+                  <Link href={item.attributes.path} key={item.id}>
                     <Button
                       sx={{
                         fontFamily: "aquirebold",
@@ -51,7 +57,6 @@ function index({ menus, tags, products }: any) {
                 );
               }
             )}
-         
           </Box>
         </Grid>
         <Grid
@@ -78,13 +83,15 @@ function index({ menus, tags, products }: any) {
               alignItems="center"
               sx={{ paddingTop: 1.5 }}
             >
-              {tags.map((item: {id:number; attributes: { nametag: string } }) => {
-                return (
-                  <Grid item xs={3} lg={1} >
-                    <Button >{item.attributes.nametag}</Button>
-                  </Grid>
-                );
-              })}
+              {tags.map(
+                (item: { id: number; attributes: { nametag: string } }) => {
+                  return (
+                    <Grid item xs={3} lg={1}>
+                      <Button>{item.attributes.nametag}</Button>
+                    </Grid>
+                  );
+                }
+              )}
             </Grid>
           </Box>
           <Grid
@@ -95,7 +102,7 @@ function index({ menus, tags, products }: any) {
           >
             {products.map((item: any) => {
               return (
-                <Grid item lg={3.5} md={6} xs={12} key ={item.id}>
+                <Grid item lg={3.5} md={6} xs={12} key={item.id}>
                   <Card className="Card">
                     <CardMedia
                       component="img"
@@ -121,6 +128,39 @@ function index({ menus, tags, products }: any) {
                       >
                         {item.attributes.price}
                       </Typography>
+                      <div className="ButtonBuy">
+                        <Button
+                          sx={{
+                            backgroundColor: "#7ECA9C",
+                            border: `1px solid black`,
+                            fontFamily: "Abhaya Libre",
+                            fontWeight: "bold",
+                            color: "black",
+                            ":hover": {
+                              bgcolor: "primary.main", // theme.palette.primary.main
+                              color: "white",
+                            },
+                          }}
+                        >
+                          ADDCART
+                        </Button>
+                        <Button
+                          sx={{
+                            backgroundColor: "#A7BBC7",
+                            border: `1px solid black`,
+                            fontFamily: "Abhaya Libre",
+                            fontWeight: "bold",
+                            color: "black",
+                            marginLeft: 1,
+                            ":hover": {
+                              bgcolor: "primary.main", // theme.palette.primary.main
+                              color: "white",
+                            },
+                          }}
+                        >
+                          BUYNOW
+                        </Button>
+                      </div>
                     </CardContent>
                   </Card>
                 </Grid>
@@ -129,12 +169,11 @@ function index({ menus, tags, products }: any) {
           </Grid>
         </Grid>
       </Grid>
-      <IconButton className ="Carts">
+      <IconButton className="Carts">
         <Image src={Carts} />
         <h5>0</h5>
-        
       </IconButton>
-      <Backtop/>
+      <Backtop />
       <Background color="#FFE6E6" />
     </div>
   );
@@ -148,43 +187,42 @@ export const getStaticProps: GetStaticProps = async () => {
   });
   const { data } = await client.query({
     query: gql`
-    query Getmenu {
-      menus {
-        data {
-          id
-          attributes {
-            name
-            path
+      query Getmenu {
+        menus {
+          data {
+            id
+            attributes {
+              name
+              path
+            }
           }
         }
-      }
-      tags {
-        data {
-          id
-          attributes {
-            nametag
+        tags {
+          data {
+            id
+            attributes {
+              nametag
+            }
           }
         }
-      }
-      products {
-        data {
-          id
-          attributes {
-            description
-            name
-            price
-            image {
-              data {
-                attributes {
-                  url
+        products {
+          data {
+            id
+            attributes {
+              description
+              name
+              price
+              image {
+                data {
+                  attributes {
+                    url
+                  }
                 }
               }
             }
           }
         }
       }
-    }
-    
     `,
   });
   return {
