@@ -20,8 +20,12 @@ import Backtop from "../../components/Backtop";
 import { motion } from "framer-motion";
 import { makeStyles } from "@mui/styles";
 import {increment,decrement} from '../../redux/Reducer'
+import {useDispatch,useSelector} from "react-redux";
+import {RootState} from "../../redux/Store";
 function index({ menus, tags, products }: any) {
   //FIXME: height 100
+  const dispatch = useDispatch()
+  const basket:number = useSelector((state:RootState)=>state.counter.basket);
   console.log(products);
   return (
     <div>
@@ -141,6 +145,7 @@ function index({ menus, tags, products }: any) {
                               color: "white",
                             },
                           }}
+                          onClick ={()=>dispatch(increment())}
                         >
                           ADDCART
                         </Button>
@@ -171,7 +176,7 @@ function index({ menus, tags, products }: any) {
       </Grid>
       <IconButton className="Carts">
         <Image src={Carts} />
-        <h5>0</h5>
+        <h5>{basket}</h5>
       </IconButton>
       <Backtop />
       <Background color="#FFE6E6" />

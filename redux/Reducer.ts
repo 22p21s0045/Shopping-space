@@ -60,7 +60,7 @@ export const counterSlice = createSlice({
       // immutable state based off those changes
       
       state.basket += 1
-      state.netprice+=action.payload.price
+      //state.netprice+=action.payload.price
     },
     decrement: (state,action) => {
       state.basket-= 1
