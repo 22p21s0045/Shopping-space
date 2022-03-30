@@ -19,7 +19,7 @@ import BackTop from "../../components/Backtop";
 import Backtop from "../../components/Backtop";
 import { motion } from "framer-motion";
 import { makeStyles } from "@mui/styles";
-
+import {increment,decrement} from '../../redux/Reducer'
 function index({ menus, tags, products }: any) {
   //FIXME: height 100
   console.log(products);
