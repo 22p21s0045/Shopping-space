@@ -26,6 +26,7 @@ function index({ menus, tags, products }: any) {
   //FIXME: height 100
   const dispatch = useDispatch()
   const basket:number = useSelector((state:RootState)=>state.counter.basket);
+  const netprice:number = useSelector((state:RootState)=>state.counter.netprice);
   console.log(products);
   return (
     <div>
@@ -145,7 +146,7 @@ function index({ menus, tags, products }: any) {
                               color: "white",
                             },
                           }}
-                          onClick ={()=>dispatch(increment())}
+                          onClick ={()=>dispatch(increment({price:item.attributes.price,product:item}))}
                         >
                           ADDCART
                         </Button>
@@ -177,6 +178,7 @@ function index({ menus, tags, products }: any) {
       <IconButton className="Carts">
         <Image src={Carts} />
         <h5>{basket}</h5>
+        <h1>amount{netprice}</h1>
       </IconButton>
       <Backtop />
       <Background color="#FFE6E6" />
@@ -217,6 +219,7 @@ export const getStaticProps: GetStaticProps = async () => {
               description
               name
               price
+              amount
               image {
                 data {
                   attributes {
