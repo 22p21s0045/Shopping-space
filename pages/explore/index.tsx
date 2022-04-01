@@ -220,6 +220,13 @@ export const getStaticProps: GetStaticProps = async () => {
               name
               price
               amount
+              coverimage {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
               image {
                 data {
                   attributes {

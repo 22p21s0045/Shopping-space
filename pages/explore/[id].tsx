@@ -1,9 +1,15 @@
-import React from 'react'
-
+import React from "react";
+import Navbar from "../../components/Navbar";
+import Grid from "@mui/material/Grid";
 function id() {
   return (
-    <div>o now</div>
-  )
+    <div>
+      <Navbar />
+      <Grid container>
+
+      </Grid>
+    </div>
+  );
 }
 
-export default id
+export default id;

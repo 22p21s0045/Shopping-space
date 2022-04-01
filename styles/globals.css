@@ -12,6 +12,11 @@ body {
   font-family: aquirebold;
   src: url(../styles/fonts/aquirebold.woff2);
 }
+@font-face {
+  font-family: Jeju;
+  
+  src: url(../styles/fonts/JejuHallasan.ttf.woff);
+}
 @import url("https://fonts.googleapis.com/css2?family=Short+Stack&display=swap");
 a {
   color: inherit;
