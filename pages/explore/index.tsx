@@ -19,14 +19,18 @@ import BackTop from "../../components/Backtop";
 import Backtop from "../../components/Backtop";
 import { motion } from "framer-motion";
 import { makeStyles } from "@mui/styles";
-import {increment,decrement} from '../../redux/Reducer'
-import {useDispatch,useSelector} from "react-redux";
-import {RootState} from "../../redux/Store";
+import { increment, decrement } from "../../redux/Reducer";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux/Store";
 function index({ menus, tags, products }: any) {
   //FIXME: height 100
-  const dispatch = useDispatch()
-  const basket:number = useSelector((state:RootState)=>state.counter.basket);
-  const netprice:number = useSelector((state:RootState)=>state.counter.netprice);
+  const dispatch = useDispatch();
+  const basket: number = useSelector(
+    (state: RootState) => state.counter.basket
+  );
+  const netprice: number = useSelector(
+    (state: RootState) => state.counter.netprice
+  );
   console.log(products);
   return (
     <div>
@@ -146,26 +150,35 @@ function index({ menus, tags, products }: any) {
                               color: "white",
                             },
                           }}
-                          onClick ={()=>dispatch(increment({price:item.attributes.price,product:item}))}
+                          onClick={() =>
+                            dispatch(
+                              increment({
+                                price: item.attributes.price,
+                                product: item,
+                              })
+                            )
+                          }
                         >
                           ADDCART
                         </Button>
-                        <Button
-                          sx={{
-                            backgroundColor: "#A7BBC7",
-                            border: `1px solid black`,
-                            fontFamily: "Abhaya Libre",
-                            fontWeight: "bold",
-                            color: "black",
-                            marginLeft: 1,
-                            ":hover": {
-                              bgcolor: "primary.main", // theme.palette.primary.main
-                              color: "white",
-                            },
-                          }}
-                        >
-                          BUYNOW
-                        </Button>
+                        <Link href={`/explore/${item.id}`} >
+                          <Button
+                            sx={{
+                              backgroundColor: "#A7BBC7",
+                              border: `1px solid black`,
+                              fontFamily: "Abhaya Libre",
+                              fontWeight: "bold",
+                              color: "black",
+                              marginLeft: 1,
+                              ":hover": {
+                                bgcolor: "primary.main", // theme.palette.primary.main
+                                color: "white",
+                              },
+                            }}
+                          >
+                            BUYNOW
+                          </Button>
+                        </Link>
                       </div>
                     </CardContent>
                   </Card>

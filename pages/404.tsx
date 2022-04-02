@@ -22,7 +22,7 @@ function Cutom404() {
           >
             404 not found
           </Typography>
-          <Link href="/">
+          <Link href="/explore">
             <Button
               sx={{
                 marginLeft: "65%",
@@ -43,7 +43,7 @@ function Cutom404() {
                 fontSize: 30,
               }}
             >
-              Back to home
+              Back to shop
             </Button>
           </Link>
           <Image src={Oops} />
