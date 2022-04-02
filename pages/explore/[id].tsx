@@ -5,16 +5,19 @@ import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/Store";
 import {useState,useEffect} from "react"
+interface State{
+  original: string;
+}
 function id() {
   const router = useRouter();
-  const [state, setState] = useState({});
+  const [state, setState] = useState<string[]>([]);
   const { id } = router.query;
   const product = useSelector((state: RootState) =>
     state.counter.products.find((p: { id: any }) => p.id == id)
   );
   
 useEffect(() => {
-  product.attributes.coverimage.data.map((item: { attributes: { url: string; }; }) =>setState({...state,original: item.attributes.url }));
+  product.attributes.coverimage.data.map((item: { attributes: { url: string; }; }) =>setState(oldstate=>([...oldstate,{original: item.attributes.url}])));
 },[])
   console.log(state)
   return (
