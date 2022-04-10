@@ -161,7 +161,7 @@ function index({ menus, tags, products }: any) {
                         >
                           ADDCART
                         </Button>
-                        <Link href={`/explore/${item.id}`} >
+                        <Link href={`/explore/${item.id}`}>
                           <Button
                             sx={{
                               backgroundColor: "#A7BBC7",
@@ -175,6 +175,14 @@ function index({ menus, tags, products }: any) {
                                 color: "white",
                               },
                             }}
+                            onClick={() =>
+                              dispatch(
+                                increment({
+                                  price: item.attributes.price,
+                                  product: item,
+                                })
+                              )
+                            }
                           >
                             BUYNOW
                           </Button>

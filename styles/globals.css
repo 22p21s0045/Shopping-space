@@ -1,3 +1,4 @@
+@import "~react-image-gallery/styles/css/image-gallery.css";
 html,
 body {
   width: 100%;
@@ -6,7 +7,7 @@ body {
 }
 body {
   overflow-x: hidden;
-  margin:0px
+  margin: 0px;
 }
 @font-face {
   font-family: aquirebold;
@@ -14,7 +15,7 @@ body {
 }
 @font-face {
   font-family: Jeju;
-  
+
   src: url(../styles/fonts/JejuHallasan.ttf.woff);
 }
 @import url("https://fonts.googleapis.com/css2?family=Short+Stack&display=swap");
@@ -22,7 +23,7 @@ a {
   color: inherit;
   text-decoration: none;
 }
-@import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Abhaya+Libre&display=swap");
 
 .BGS {
   width: 100%;
@@ -72,18 +73,25 @@ a {
   border-width: 5px;
   border: double 4px transparent;
   border-radius: 30px;
-  background-image: linear-gradient(#F8D49D, #F8D49D), radial-gradient(circle at top left, #7cdd91,#CDD0CB);
+  background-image: linear-gradient(#f8d49d, #f8d49d),
+    radial-gradient(circle at top left, #7cdd91, #cdd0cb);
   background-origin: border-box;
   background-clip: content-box, border-box;
 }
 
-.Carts{
-  position:sticky;
+.Carts {
+  position: sticky;
   left: 100;
   left: 90%;
-  bottom:0;
+  bottom: 0;
 }
-.ButtonBuy{
+.ButtonBuy {
   position: relative;
-  left:20%;
+  left: 20%;
+}
+.image-gallery {
+ 
+  width: 500px;
+  height: 630px;
+  object-fit: cover;
 }

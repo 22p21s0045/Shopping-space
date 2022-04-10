@@ -16,6 +16,7 @@
     "@mui/styles": "^5.5.1",
     "@reduxjs/toolkit": "^1.8.0",
     "@types/canvas-confetti": "^1.4.2",
+    "@types/react-image-gallery": "^1.0.5",
     "add": "^2.0.6",
     "animate.css": "^4.1.1",
     "axios": "^0.26.0",
