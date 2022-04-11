@@ -2,9 +2,14 @@ import React from "react";
 import Navbar from "../../components/Navbar";
 import Grid from "@mui/material/Grid";
 import IconButton from "@mui/material/IconButton";
+import Box from "@mui/material/Box";
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 import Up from "../../styles/img/Button/Up.svg";
+import Down from "../../styles/img/Button/Downs.svg";
 import { useRouter } from "next/router";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { increment, decrement } from "../../redux/Reducer";
 import { RootState } from "../../redux/Store";
 import { styled } from "@mui/material/styles";
 import { useState, useEffect } from "react";
@@ -27,13 +32,13 @@ const Root = styled("div")(({ theme }) => ({
 function id() {
   const router = useRouter();
   const [state, setState] = useState([]);
-  
+  const dispatch = useDispatch();
   const { id } = router.query;
   const product = useSelector((state: RootState) =>
     state.counter.products.find((p: { id: any }) => p.id == id)
   );
-  
-console.log(product);
+
+  console.log(product);
   useEffect(() => {
     product.attributes.coverimage.data.map(
       (item: { attributes: { url: string } }) =>
@@ -49,7 +54,7 @@ console.log(product);
         )
     );
   }, []);
-  
+
   console.log(state);
   return (
     <div>
@@ -69,10 +74,27 @@ console.log(product);
           <h1>{product.attributes.name}</h1>
 
           <h1 style={{ marginLeft: "40%" }}>{product.attributes.price} บาท</h1>
-          <IconButton>
-            <Image src={Up} />
-          </IconButton>
-          <h1>{product.quantity}</h1>
+          <Box sx={{ display: "flex", marginLeft: "20%" }}>
+            <IconButton
+              sx={{ marginRight: 1 }}
+              onClick={() =>
+                dispatch(
+                  increment({
+                    price: product.attributes.price,
+                    product: product,
+                  })
+                )
+              }
+            >
+              <Image src={Up} />
+            </IconButton>
+            <h1>{product.quantity}</h1>
+            <IconButton sx={{ marginLeft: 1 }}>
+              <Image src={Down} />
+            </IconButton>
+            <TextField id="outlined-basic" label="Promotion Code" variant="outlined" sx ={{marginLeft: 1 }}/>
+          </Box>
+          <Button variant="contained"> Checkout</Button>
         </Grid>
         <Grid item lg={6} md={12} xs={12}>
           <p>{product.attributes.description}</p>
