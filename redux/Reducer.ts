@@ -44,7 +44,12 @@ export const counterSlice = createSlice({
       const newItem = action.payload.product
       const existingItem = state.products.find((item: { id: number}):boolean => item.id === newItem.id)
       if (existingItem) {
-        existingItem.quantity += 1
+        existingItem.quantity -= 1
+      }
+      if (existingItem.quantity <0) {
+        existingItem.quantity = 0
+        state.basket += 1
+        state.netprice += action.payload.price
       }
       state.basket -= 1
       state.netprice -= action.payload.price

@@ -95,3 +95,32 @@ a {
   height: 630px;
   object-fit: cover;
 }
+.description{
+  border-color: #000;
+  overflow: hidden;
+  background-color: #cbe1f3;
+  border-radius: 15px;
+  text-align: center;
+}
+::-webkit-scrollbar {
+  width:15px;
+}
+
+::-webkit-scrollbar-track {
+ 
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #adb0b3;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
+}
+.description:hover{
+  overflow-y: scroll;
+}
