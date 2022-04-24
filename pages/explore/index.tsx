@@ -196,11 +196,13 @@ function index({ menus, tags, products }: any) {
           </Grid>
         </Grid>
       </Grid>
+      <Link href = "/explore/checkout">
       <IconButton className="Carts">
         <Image src={Carts} />
         <h5>{basket}</h5>
         <h1>amount{netprice}</h1>
       </IconButton>
+      </Link>
       <Backtop />
       <Background color="#FFE6E6" />
     </div>

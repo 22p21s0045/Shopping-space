@@ -9,6 +9,7 @@ import TextField from "@mui/material/TextField";
 import Up from "../../styles/img/Button/Up.svg";
 import Down from "../../styles/img/Button/Downs.svg";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { increment, decrement } from "../../redux/Reducer";
 import { RootState } from "../../redux/Store";
@@ -102,7 +103,10 @@ function id() {
             </IconButton>
            
           </Box>
+          <Link href ="/explore/checkout">
+
           <Button variant="contained"> Checkout</Button>
+          </Link>
           <Box
             sx={{
               visibility: "visible",
