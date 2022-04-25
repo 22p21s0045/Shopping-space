@@ -24,7 +24,7 @@ function Backtop() {
           onClick={scrollTop}
           sx={{
             position: "fixed",
-            bottom: 0,
+            bottom: "15%",
             left: "95%",
             transform: "rotate(90deg)",
           }}

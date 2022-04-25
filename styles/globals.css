@@ -124,3 +124,36 @@ a {
 .description:hover{
   overflow-y: scroll;
 }
+/* Checkout page Background*/
+.circleBg{
+  position:absolute;
+  left:-2rem;
+  width:20rem;
+  z-index: -1;
+ 
+}
+
+.circleBg2{
+  position:absolute;
+  right: -10rem;
+  z-index: -1;
+ 
+}
+@media screen and (max-width: 800px) {
+  .circleBg{
+    position:absolute;
+    left:-2rem;
+    width:10rem;
+    z-index: -1;
+   
+  }
+  .circleBg2{
+    position:absolute;
+    right: -5rem;
+    width:16rem;
+    
+    z-index: -1;
+   
+  }
+}
+  
