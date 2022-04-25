@@ -1,4 +1,6 @@
 import React from "react";
+
+import { useInView } from "react-intersection-observer";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
@@ -10,9 +12,8 @@ import Link from "next/link";
 import { useEffect } from "react";
 import Alert from "@mui/material/Alert";
 import { Animated } from "react-animated-css";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import axios from "axios";
-
 
 function Sponsor({ comments }: any) {
   console.log(comments);
@@ -25,6 +26,28 @@ function Sponsor({ comments }: any) {
     return get.data;
   };
   const { isLoading, isError, data, error } = useQuery("sponsor", fetchSponsor);
+  const { ref, inView, entry } = useInView();
+  const animation = useAnimation();
+  useEffect(() => {
+    if (inView) {
+      animation.start({
+        x: 100,
+        transition: {
+          type: "spring",
+          duration: 30,
+        },
+      });
+    }
+    if (!inView) {
+      animation.start({
+        x: -100,
+        transition: {
+          type: "spring",
+          duration: 1,
+        },
+      });
+    }
+  }, [inView]);
   if (isLoading) {
     return (
       <Grid
@@ -85,12 +108,7 @@ function Sponsor({ comments }: any) {
           >
             SPONSOR
           </Typography>
-          <Grid
-            container
-            justifyContent="center"
-            alignItems="center"
-            spacing={0.1}
-          >
+          <Grid container justifyContent="center" spacing={0.1}>
             {data.data.map((item: any) => {
               console.log(item);
               return (
@@ -116,26 +134,37 @@ function Sponsor({ comments }: any) {
         </Box>
       </Grid>
       <Grid container justifyContent="center" style={{ paddingTop: 100 }}>
-        <Box
-          sx={{
-            width: 700,
-            height: 320,
-            backgroundColor: "#270082",
-            borderRadius: "40px",
-            textAlign: "center",
-            border: "1px solid white",
-          }}
-        >
-          <Typography
-            style={{ fontFamily: "aquirebold", color: "white", fontSize: 24 }}
-          >
-            LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT. QUAE
-            SEQUUNTUR IGITUR? SED HAEC NIHIL SANE AD REM; HOC LOCO TENERE SE
-            TRIARIUS NON POTUIT. RATIONIS ENIM PERFECTIO EST VIRTUS; DUO REGES:
-            CONSTRUCTIO INTERRETE. SINT MODO PARTES VITAE BEATAE.
-          </Typography>
-        </Box>
-        <Grid item>
+      <Grid item xs={7} md={5} lg={5}>
+        <div ref={ref}>
+        
+          <motion.div animate={animation}>
+            
+              <Box
+                sx={{
+                  height: 320,
+                  backgroundColor: "#270082",
+                  borderRadius: "40px",
+                  textAlign: "center",
+                  border: "1px solid white",
+                }}
+              >
+                <Typography
+                  style={{ fontFamily: "aquirebold", color: "white" }}
+                  fontSize={{ lg: 24, md: 18, sm: 16, xs: 16 }}
+                >
+                  LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT. QUAE
+                  SEQUUNTUR IGITUR? SED HAEC NIHIL SANE AD REM; HOC LOCO TENERE
+                  SE TRIARIUS NON POTUIT. RATIONIS ENIM PERFECTIO EST VIRTUS;
+                  DUO REGES: CONSTRUCTIO INTERRETE. SINT MODO PARTES VITAE
+                  BEATAE.
+                </Typography>
+              </Box>
+            
+          </motion.div>
+         
+        </div>
+        </Grid>
+        <Grid item md={7} lg={5}>
           <Image
             src={require("../styles/img/flame-296.gif")}
             width={470}
@@ -143,13 +172,9 @@ function Sponsor({ comments }: any) {
           />
         </Grid>
       </Grid>
-      
-        //TODO: fix map
-        
-      
+     
     </div>
   );
 }
 
 export default Sponsor;
-

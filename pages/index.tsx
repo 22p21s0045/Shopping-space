@@ -10,9 +10,24 @@ import Background from "../components/Background";
 import Sponsor from "../components/Sponsor";
 import Image from "next/image";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
+import {useAnimation,motion} from 'framer-motion';
+import { useInView } from "react-intersection-observer";
 import Down from "../components/Down";
+import {useEffect} from "react";
+
 const Home: NextPage = ({ comments }: any) => {
+  const animation = useAnimation();
+  const {ref, inView, entry} = useInView();
   console.table(comments);
+  useEffect(()=>{
+    if (inView) {
+
+      animation.start({
+        x:[50,-50],
+        transition:{type:'spring',duration:1},
+      })
+    }
+  },[inView])
   return (
     <div className="all">
       <Navbar />
@@ -21,7 +36,10 @@ const Home: NextPage = ({ comments }: any) => {
       <Grid container justifyContent="center" direction="row" spacing={25}>
         {comments.map((comment: any) => {
           return (
+           
             <Grid item key={comment.id}>
+               <div ref ={ref}>
+                 <motion.div animate ={animation}>
               <Card
                 sx={{ minWidth: 345, minHeight: 435 }}
                 className="CommentCard"
@@ -61,7 +79,10 @@ const Home: NextPage = ({ comments }: any) => {
                   </Grid>
                 </CardContent>
               </Card>
+              </motion.div>
+              </div>
             </Grid>
+           
           );
         })}
       </Grid>
@@ -76,7 +97,7 @@ const Home: NextPage = ({ comments }: any) => {
         </Grid>
       </Grid>
 
-      <Background />
+      <Background color ="#000"/>
       <Down />
     </div>
   );

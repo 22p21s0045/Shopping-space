@@ -9,7 +9,7 @@ function Background(props: any) {
         options={{
           background: {
             color: {
-              value: "#000",
+              value: props.color,
             },
           },
           fpsLimit: 120,

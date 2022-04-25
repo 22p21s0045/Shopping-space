@@ -1,21 +1,29 @@
+@import "~react-image-gallery/styles/css/image-gallery.css";
 html,
 body {
-width: 100%;
-overflow:visible;
-
+  width: 100%;
+  height: 100%;
+  overflow: visible;
 }
 body {
   overflow-x: hidden;
+  margin: 0px;
 }
 @font-face {
   font-family: aquirebold;
   src: url(../styles/fonts/aquirebold.woff2);
+}
+@font-face {
+  font-family: Jeju;
+
+  src: url(../styles/fonts/JejuHallasan.ttf.woff);
 }
 @import url("https://fonts.googleapis.com/css2?family=Short+Stack&display=swap");
 a {
   color: inherit;
   text-decoration: none;
 }
+@import url("https://fonts.googleapis.com/css2?family=Abhaya+Libre&display=swap");
 
 .BGS {
   width: 100%;
@@ -54,10 +62,98 @@ a {
   border-width: 5px;
   border-style: solid;
   border-color: #ce7bb0;
-  background-image: linear-gradient(to bottom, #711A75 0%, #3a4ed5 100%);
+  background-image: linear-gradient(to bottom, #711a75 0%, #3a4ed5 100%);
 }
-.mountain{
+.mountain {
   position: relative;
   width: 100%;
-  
 }
+.Card {
+  border-style: solid;
+  border-width: 5px;
+  border: double 4px transparent;
+  border-radius: 30px;
+  background-image: linear-gradient(#f8d49d, #f8d49d),
+    radial-gradient(circle at top left, #7cdd91, #cdd0cb);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+
+.Carts {
+  position: sticky;
+  left: 100;
+  left: 90%;
+  bottom: 0;
+}
+.ButtonBuy {
+  position: relative;
+  left: 20%;
+}
+.image-gallery {
+ 
+  width: 500px;
+  height: 630px;
+  object-fit: cover;
+}
+.description{
+  border-color: #000;
+  overflow: hidden;
+  background-color: #cbe1f3;
+  border-radius: 15px;
+  text-align: center;
+}
+::-webkit-scrollbar {
+  width:15px;
+}
+
+::-webkit-scrollbar-track {
+ 
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #adb0b3;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
+}
+.description:hover{
+  overflow-y: scroll;
+}
+/* Checkout page Background*/
+.circleBg{
+  position:absolute;
+  left:-2rem;
+  width:20rem;
+  z-index: -1;
+ 
+}
+
+.circleBg2{
+  position:absolute;
+  right: -10rem;
+  z-index: -1;
+ 
+}
+@media screen and (max-width: 800px) {
+  .circleBg{
+    position:absolute;
+    left:-2rem;
+    width:10rem;
+    z-index: -1;
+   
+  }
+  .circleBg2{
+    position:absolute;
+    right: -5rem;
+    width:16rem;
+    
+    z-index: -1;
+   
+  }
+}
+  

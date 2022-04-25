@@ -9,12 +9,16 @@ function Navbar(props: any) {
       <Header background="brand" pad="small">
         <Avatar src={props.avatar} />
         <Box direction="row" gap="large" align="center" justify="between">
+          <Link href="/">
         <Button style={{ fontFamily: "aquirebold", color: "white",fontSize: 24}}>
             Home
           </Button>
+          </Link>
+          <Link href ='/explore'>
           <Button style={{ fontFamily: "aquirebold", color: "white",fontSize: 24 }}>
             Explore
           </Button>
+          </Link>
         </Box>
 
 
